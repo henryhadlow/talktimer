@@ -40,7 +40,7 @@
           if (state.fill) {
             $this.addClass('fill');
           }
-          $this.pietimer('start');
+          // $this.pietimer('start');
         }
       });
     },
@@ -55,7 +55,8 @@
           data.callback();
         } else {
           var percent = 100-((seconds/(data.timerSeconds))*100);
-          $(this).pietimer('drawTimer', percent);
+          var mins = (Math.round(seconds/30))/2;
+          $(this).pietimer('drawTimer', percent, seconds, mins);
         }
       }
     },
@@ -63,11 +64,15 @@
     drawTimer: function(percent) {
       $this = $(this);
       var data = $this.data('pietimer');
+      var seconds = (data.timerFinish-(new Date().getTime()))/1000;
+      var mins = (Math.round(seconds/30))/2;
+      var minsInt = Math.floor(mins);
+      var half = mins - minsInt;
       if (data) {
-        if(percent > 90) {
+        if(mins < 1) {
           $("body").css("background", "pink");
         }
-        $this.html('<div class="percent"></div><div class="time"></div><div class="slice'+(percent > 50?' gt50"':'"')+'><div class="pie"></div>'+(percent > 50?'<div class="pie fill"></div>':'')+'</div>');
+        $this.html('<div class="time"></div><div class="percent"></div><div class="slice'+(percent > 50?' gt50"':'"')+'><div class="pie"></div>'+(percent > 50?'<div class="pie fill"></div>':'')+'</div>');
         var deg = 360/100*percent;
         $this.find('.slice .pie').css({
           '-moz-transform':'rotate('+deg+'deg)',
@@ -76,9 +81,21 @@
           'transform':'rotate('+deg+'deg)'
         });
         $this.find('.percent').html(Math.round(percent)+'%');
-        $this.find('.time').html(
-          Math.round(percent)+'%'
-        );
+        $this.find('.time').html(function() {
+          if (seconds > 0 && mins == 0) {
+            mins = 0.5;
+          }
+          if (half != 0 && minsInt != 0) {
+            var text = minsInt + '&thinsp;&frac12;';
+          } else if (half == 0 && minsInt != 0) {
+            var text = minsInt;
+          } else if (half != 0 && minsInt == 0) {
+            var text = '&frac12;';
+          } else {
+            var text = 0;
+          } 
+          return text;
+        });
         if (data.showPercentage) {
           $this.find('.percent').show();
         }

@@ -9,6 +9,7 @@ body {
     -ms-transition: background-color 1s ease-in-out;
     -webkit-transition: background-color 1s ease-in-out;
     font: 200% "Helvetica Neue", Helvetica, sans-serif;
+    font-weight: bold;
     width: 300px;
     height: 300px;
     position: absolute;
@@ -23,7 +24,7 @@ body {
     height: 1em;
 }
 .pietimer > .percent, .pietimer > .time {
-    font-size: 0.1em;
+    font-size: 0.15em;
     width: 100px;
     height: 30px;
     position: absolute;
@@ -31,6 +32,9 @@ body {
     top: 48%;
     margin: -15px 0 0 -50px;
     text-align:center;
+}
+
+.pietimer > .percent {
     display: none;
 }
 .pietimer > .slice {
