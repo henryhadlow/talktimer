@@ -17,6 +17,7 @@
         callback: function() {},
         timerCurrent: 0,
         showPercentage: false,
+        showTime: true,
         fill: false,
         color: '#CCC'
       };
@@ -32,6 +33,9 @@
           $this.data('pietimer', state);
           if (state.showPercentage) {
             $this.find('.percent').show();
+          }
+          if (state.showTime) {
+            $this.find('.time').show();
           }
           if (state.fill) {
             $this.addClass('fill');
@@ -63,7 +67,7 @@
         if(percent > 90) {
           $("body").css("background", "pink");
         }
-        $this.html('<div class="percent"></div><div class="slice'+(percent > 50?' gt50"':'"')+'><div class="pie"></div>'+(percent > 50?'<div class="pie fill"></div>':'')+'</div>');
+        $this.html('<div class="percent"></div><div class="time"></div><div class="slice'+(percent > 50?' gt50"':'"')+'><div class="pie"></div>'+(percent > 50?'<div class="pie fill"></div>':'')+'</div>');
         var deg = 360/100*percent;
         $this.find('.slice .pie').css({
           '-moz-transform':'rotate('+deg+'deg)',
@@ -72,8 +76,14 @@
           'transform':'rotate('+deg+'deg)'
         });
         $this.find('.percent').html(Math.round(percent)+'%');
+        $this.find('.time').html(
+          Math.round(percent)+'%'
+        );
         if (data.showPercentage) {
           $this.find('.percent').show();
+        }
+        if (data.showTime) {
+          $this.find('.time').show();
         }
         if ($this.hasClass('fill')) {
           $this.find('.slice .pie').css({backgroundColor: data.color});

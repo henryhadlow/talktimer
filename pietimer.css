@@ -1,28 +1,35 @@
+html {
+    font-size: 62.5%;
+}
+
 body {
     background-color: #ACD72F;
     color: #fff;
     -moz-transition: background-color 1s ease-in-out;
     -ms-transition: background-color 1s ease-in-out;
     -webkit-transition: background-color 1s ease-in-out;
-}
-
-#timer {
-    width: 200px;
-    height: 200px;
+    font: 200% "Helvetica Neue", Helvetica, sans-serif;
+    width: 300px;
+    height: 300px;
     position: absolute;
     left: 50%;
     top: 48%;
-    margin: -100px 0 0 -100px;
+    margin: -150px 0 0 -150px;
 }
 
 .pietimer {
-    font-size: 200px;
+    font-size: 15em;
     width: 1em;
     height: 1em;
 }
-.pietimer > .percent {
-    width: 3.33em;
-    font-size: 0.3em;
+.pietimer > .percent, .pietimer > .time {
+    font-size: 0.1em;
+    width: 100px;
+    height: 30px;
+    position: absolute;
+    left: 50%;
+    top: 48%;
+    margin: -15px 0 0 -50px;
     text-align:center;
     display: none;
 }
