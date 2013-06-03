@@ -10,10 +10,10 @@
   <script type="text/javascript">
     $(function() {
       $('#timer').pietimer({
-          timerSeconds: 10,
-          color: '#234',
+          timerSeconds: 300,
+          color: '#fff',
           fill: false,
-          showPercentage: true,
+          showPercentage: false,
           callback: function() {
               alert("yahoo, timer is done!");
               $('#timer').pietimer('reset');
@@ -23,6 +23,7 @@
   </script>
 </head>
 <body>
-  <div id="timer"></div>
+  <div id="timer">
+  </div>
 </body>
 </html>
