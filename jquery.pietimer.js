@@ -69,6 +69,9 @@
       var minsInt = Math.floor(mins);
       var half = mins - minsInt;
       if (data) {
+        if (seconds > 0 && mins == 0) {
+          mins = 0.5;
+        }
         if(mins < 1) {
           $("body").css("background", "pink");
         }
@@ -82,9 +85,6 @@
         });
         $this.find('.percent').html(Math.round(percent)+'%');
         $this.find('.time').html(function() {
-          if (seconds > 0 && mins == 0) {
-            mins = 0.5;
-          }
           if (half != 0 && minsInt != 0) {
             var text = minsInt + '&thinsp;&frac12;';
           } else if (half == 0 && minsInt != 0) {
