@@ -1,5 +1,9 @@
 body {
     background-color: #ACD72F;
+    color: #fff;
+    -moz-transition: background-color 1s ease-in-out;
+    -ms-transition: background-color 1s ease-in-out;
+    -webkit-transition: background-color 1s ease-in-out;
 }
 
 #timer {
@@ -49,6 +53,12 @@ body {
 }
 .pietimer.fill > .percent {
     display: none;
+    width: 200px;
+    height: 30px;
+    position: absolute;
+    left: 50%;
+    top: 48%;
+    margin: -15px 0 0 -100px;
 }
 .pietimer.fill > .slice > .pie {
     border: transparent;

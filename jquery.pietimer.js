@@ -60,6 +60,9 @@
       $this = $(this);
       var data = $this.data('pietimer');
       if (data) {
+        if(percent > 90) {
+          $("body").css("background", "pink");
+        }
         $this.html('<div class="percent"></div><div class="slice'+(percent > 50?' gt50"':'"')+'><div class="pie"></div>'+(percent > 50?'<div class="pie fill"></div>':'')+'</div>');
         var deg = 360/100*percent;
         $this.find('.slice .pie').css({
