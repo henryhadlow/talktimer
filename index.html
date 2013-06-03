@@ -10,13 +10,15 @@
   <script type="text/javascript">
     $(function() {
       $('#timer').pietimer({
-          timerSeconds: 300,
+          timerSeconds: 120,
           color: '#fff',
+          colours: ["#FFF", "#FF4400"],
           fill: false,
           callback: function() {
               $("body").css("background", "red")
           }
       });
+      // $('#timer').find('.time').html($(this).pietimer.timerSeconds);
       $('html').on('click', function(){
         $("body").css("background", "#ACD72F")
         $('#timer').pietimer('reset');
@@ -27,7 +29,7 @@
 </head>
 <body>
   <div id="timer">
-    <div class="time">5</div>
+    <div class="time"></div>
   </div>
 </body>
 </html>

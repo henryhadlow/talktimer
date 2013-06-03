@@ -61,20 +61,14 @@
       }
     },
 
-    drawTimer: function(percent) {
+    drawTimer: function(percent, seconds, mins) {
       $this = $(this);
       var data = $this.data('pietimer');
-      var seconds = (data.timerFinish-(new Date().getTime()))/1000;
-      var mins = (Math.round(seconds/30))/2;
+      var seconds = seconds || (data.timerFinish-(new Date().getTime()))/1000;
+      var mins = mins || (Math.round(seconds/30))/2;
       var minsInt = Math.floor(mins);
       var half = mins - minsInt;
       if (data) {
-        if (seconds > 0 && mins == 0) {
-          mins = 0.5;
-        }
-        if(mins < 1) {
-          $("body").css("background", "pink");
-        }
         $this.html('<div class="time"></div><div class="percent"></div><div class="slice'+(percent > 50?' gt50"':'"')+'><div class="pie"></div>'+(percent > 50?'<div class="pie fill"></div>':'')+'</div>');
         var deg = 360/100*percent;
         $this.find('.slice .pie').css({
@@ -85,12 +79,16 @@
         });
         $this.find('.percent').html(Math.round(percent)+'%');
         $this.find('.time').html(function() {
+          if (seconds > 0 && mins == 0) {
+            mins = 0.5;
+          }
           if (half != 0 && minsInt != 0) {
             var text = minsInt + '&thinsp;&frac12;';
           } else if (half == 0 && minsInt != 0) {
             var text = minsInt;
           } else if (half != 0 && minsInt == 0) {
             var text = '&frac12;';
+            $("body").css("background", "pink");
           } else {
             var text = 0;
           } 
