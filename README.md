@@ -12,3 +12,4 @@ Based on [jquery.pietimer](https://github.com/chikamichi/jquery.pietimer) by Jea
 * Support for viewing countdown time before countdown start
 * Support for swipe gestures on mobile
 * Support for start/stop/reset
+* Proper icon
