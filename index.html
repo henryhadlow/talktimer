@@ -117,7 +117,7 @@
 
       var timePattern = /(?:\?|&)t=(?:(\d+)m)?(?:(\d+)s?)?(?:$|&)/;
       var timeMatch = window.location.search.match(timePattern);
-      if (timeMatch) {
+      if (timeMatch && (timeMatch[1] || timeMatch[2])) {
         var minutes = timeMatch[1] ? parseInt(timeMatch[1]) : 0;
         var seconds = timeMatch[2] ? parseInt(timeMatch[2]) : 0;
         timerSeconds = minutes * 60 + seconds;
